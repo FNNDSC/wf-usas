@@ -1,0 +1,122 @@
+= Workflow example -- Upload, Share, Analyze, Share (`wf-usas`)
+:toc:
+:numbered:
+
+== Overall Purpose
+
+This series of workflow test examples is designed to collect telemetry to improve UI/X by simulating real world use cases and having "focus group" users complete them.
+
+== Date
+2025-06-11
+
+== TL;DR
+
+In this specific task we explore how the ChRIS UI (and CUBE) help facilitate the very real scientific need of _sharing_ data and analyses.
+
+- Upload a single file and share with another ChRIS user
+- Upload multiple files and share with another ChRIS user
+- Upload a directory and share with another ChRIS user
+- Upload data (either file(s) or folder), create a Feed, and share the Feed with another ChRIS user
+
+== Upload, Share, Analyze, Share
+
+A core requirement of the scientific process is collaboration. This case study collects experiences and telemetry on sharing data with users in ChRIS.
+
+=== Core Requirements
+- The user should perform file-based uploading/sharing
+- The user should perform folder-based uploading/sharing
+- The user should create and share a Feed based on uploaded data
+
+=== Implicit Requirements
+- The user must create a new ChRIS ecosystem.
+
+=== Stetch Goal Requirements
+- Perform this task on a chromium-based browser as well as a mozilla-based browser
+
+== Task
+. Setup
+.. Create a local ChRIS with latest UI
+.. Assure that you have a `pl-simpledsapp` plugin
+.. Create two non-admin users
+. Upload
+.. Upload a single file
+.. Upload multiple files
+.. Upload a directory of files
+. Share
+.. For each of the Upload cases, share with the secondary user
+. Check
+.. Log in as the secondary user
+.. Report on interacting with the single shared file
+.. Report on interacting with the multiple shared files
+.. Report on interacting with the shared folder
+. Analyze (as primary user)
+.. Upload a new folder of files
+.. Create a feed based off this newly uploaded folder
+.. Create a feed based off one of the previously shared elements
+.. For each feed, attach a single `pl-simpledsapp` plugin
+.. Share each feed with the secondary user
+
+. Check
+.. Log in as the secondary user
+.. Report on the experience and expectation of interacting with each shared feed
+
+
+== Pre-requisites
+- Latest/current ChRIS/CUBE
+- Two non-admin users
+
+- You will need:
+** `pl-simpledsapp`
+
+
+== Setup
+
+=== Create a local ChRIS ecosystem
+
+First, clone the latest `miniChRIS-docker`
+
+[source,bash]
+----
+cd ~/src
+gh repo clone FNNDSC/miniChRIS-docker
+----
+
+and the latest _ChRIS_ui_
+
+[source,bash]
+----
+cd ~/src
+gh repo clone FNNDSC/ChRIS_ui
+----
+
+Now, in `miniChRIS-docker`, simply do
+
+[source,bash]
+----
+cd miniChRIS-docker
+./minichris.sh
+----
+
+Note, that this uses the public ChRIS at https://app.chrisproject.org[app.chrisproject.org] to create/populate some initial conditions. In the rare event that this ChRIS is not available, you can bootstrap from an internal BCH ChRIS. This of course assumes you to be VPN'd in. To change the "Store" that `chrisomatic` uses to create the ecosystem, add a new `public_store` to `chrisomatic.yml`
+
+[source,yml]
+----
+
+on:
+  public_store:
+     - http://ekanite.tch.harvard.edu:32223/api/v1/
+
+----
+
+and finally, fire up the latest UI
+
+[source,bash]
+----
+cd ~/src/ChRIS_ui
+git checkout staging
+pnpm install && pnpm run dev:metal
+----
+
+
+== Final notes
+Please take this opportunity to think about _sharing_ and how it is currently implemented, and what edges remain.
