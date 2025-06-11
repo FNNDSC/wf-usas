@@ -17,6 +17,8 @@ In this specific task we explore how the ChRIS UI (and CUBE) help facilitate the
 - Upload multiple files and share with another ChRIS user
 - Upload a directory and share with another ChRIS user
 - Upload data (either file(s) or folder), create a Feed, and share the Feed with another ChRIS user
+.. Source the Feed on some previously already-shared uploaded data
+.. Source another Feed on some previously uploaded but not shared data
 
 == Upload, Share, Analyze, Share
 
@@ -25,7 +27,7 @@ A core requirement of the scientific process is collaboration. This case study c
 === Core Requirements
 - The user should perform file-based uploading/sharing
 - The user should perform folder-based uploading/sharing
-- The user should create and share a Feed based on uploaded data
+- The user should create and share a Feed based on uploaded (shared and non-shared) data
 
 === Implicit Requirements
 - The user must create a new ChRIS ecosystem.
@@ -59,7 +61,6 @@ A core requirement of the scientific process is collaboration. This case study c
 . Check
 .. Log in as the secondary user
 .. Report on the experience and expectation of interacting with each shared feed
-
 
 == Pre-requisites
 - Latest/current ChRIS/CUBE
